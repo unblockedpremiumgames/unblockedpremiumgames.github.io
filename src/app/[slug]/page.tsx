@@ -6,9 +6,18 @@ import {Metadata} from "next";
 import PageHeading from "@/components/Heading/PageHeading";
 import appConfig from "@/utils/lib/config";
 
-export const metadata: Metadata = {
-  title: "",
-};
+export async function generateMetadata({params}: { params: { slug: string } }): Promise<Metadata> {
+  const page = await getPageByUri(params.slug);
+
+  if (page && page.seo) {
+    return {
+      title: page.seo.title,
+      description: page.seo.description,
+    };
+  }
+
+  return {};
+}
 
 export default async function Page({params}: { params: { slug: string } }) {
 
@@ -23,11 +32,6 @@ export default async function Page({params}: { params: { slug: string } }) {
       props: {},
       notFound: true,
     };
-  }
-
-  if (page.seo) {
-    metadata.title = page.seo.title;
-    metadata.description = page.seo.description;
   }
 
   return (
