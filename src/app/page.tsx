@@ -1,6 +1,6 @@
 import PostCard from "@/components/PostCard";
 import Pagination from "@/components/Pagination";
-import {getAllPosts, getPagesCount, getPaginatedPosts, getPostsByCategoryId} from "@/utils/lib/posts";
+import {getAllPosts, getPagesCount, getPaginatedPosts} from "@/utils/lib/posts";
 import Section from "@/components/Section";
 import {getPageByUri} from "@/utils/lib/pages";
 import ContentBox from "@/components/ContentBox";
@@ -9,9 +9,18 @@ import {Metadata} from "next";
 import appConfig from "@/utils/lib/config";
 import Image from 'next/image';
 
-export const metadata: Metadata = {
-  title: "",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getPageByUri('homepage');
+
+  if (page && page.seo) {
+    return {
+      title: page.seo.title,
+      description: page.seo.description,
+    };
+  }
+
+  return {};
+}
 
 export default async function Home() {
 
@@ -27,17 +36,6 @@ export default async function Home() {
       props: {},
       notFound: true,
     };
-  }
-
-  metadata.title = page.title;
-  if (page.seo) {
-    metadata.title = page.seo.title;
-    metadata.description = page.seo.description;
-  }
-
-  const defaultPlayer = {
-    flashFullwidth: true,
-    flashIframe: '',
   }
 
   return (
@@ -72,7 +70,7 @@ export default async function Home() {
           <Image
             src={'/home.webp'}
             className="content-box__image"
-            alt={metadata.title}
+            alt={page.title}
             width={220}
             height={182}
           />
