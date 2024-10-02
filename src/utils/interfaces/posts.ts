@@ -46,7 +46,7 @@ export interface IPost {
     title: string;
     metaTitle: string;
     description: string;
-    content: string;
+    content?: string;
     categories?: ICategoryCard[];
     csOptionsPost: ICsPostOptions;
     featuredImage? : IFeaturedImage;

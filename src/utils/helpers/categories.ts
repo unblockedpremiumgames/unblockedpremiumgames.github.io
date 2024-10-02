@@ -1,5 +1,6 @@
 import {ICategory, ICategoryCard} from "@/utils/interfaces/categories";
 import {IQueryData} from "@/utils/interfaces/commons";
+import {replaceUrlInContent} from "@/utils/helpers/functions";
 
 /**
  * categoryPathBySlug
@@ -25,7 +26,7 @@ export function mapCategoryData(categoryData: IQueryData = {}): ICategory {
     id: databaseId,
     slug: slug,
     title: name,
-    content: description,
+    content: replaceUrlInContent(description),
   };
 }
 

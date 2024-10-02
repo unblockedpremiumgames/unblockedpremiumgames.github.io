@@ -8,7 +8,7 @@ export interface ICategory {
     id: string;
     slug: string;
     title: string;
-    content: string;
+    content?: string;
     seo?: {
         title: string;
         description: string;

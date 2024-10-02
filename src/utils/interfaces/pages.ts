@@ -16,7 +16,7 @@ export interface IPage {
     slug: string;
     uri: string;
     title: string;
-    content: string;
+    content?: string;
     children?: IPage[];
     parent?: IPage;
     featuredImage?: IFeaturedImage;

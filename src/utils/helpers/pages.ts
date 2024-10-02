@@ -3,6 +3,7 @@
  */
 import {IQueryData} from "@/utils/interfaces/commons";
 import {IPage, IPageCard} from "@/utils/interfaces/pages";
+import {replaceUrlInContent} from "@/utils/helpers/functions";
 
 export function mapPageData(pageData: IQueryData = {}): IPage {
   const {
@@ -22,7 +23,7 @@ export function mapPageData(pageData: IQueryData = {}): IPage {
     slug: slug,
     uri: uri,
     title: title,
-    content: content,
+    content: replaceUrlInContent(content),
     children: children,
     parent: parent,
     menuOrder: menuOrder,

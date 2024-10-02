@@ -1,4 +1,6 @@
 export interface IAppConfig {
+    wpDomain: string[];
+    nextDomain: string;
     export: boolean;
     development: boolean;
     endpoint: string;

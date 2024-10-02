@@ -1,5 +1,6 @@
 import {IQueryData} from "@/utils/interfaces/commons";
 import {IPost, IPostCard} from "@/utils/interfaces/posts";
+import {replaceUrlInContent} from "@/utils/helpers/functions";
 
 /**
  * postPathBySlug
@@ -79,7 +80,7 @@ export function mapPostData(postData: IQueryData = {}): IPost {
     title: title,
     metaTitle: metaTitle,
     description: description,
-    content: content,
+    content: replaceUrlInContent(content),
     categories: [],
     csOptionsPost: csOptionsPost,
     isSticky: isSticky,
