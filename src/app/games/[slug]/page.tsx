@@ -71,16 +71,18 @@ export default async function Post({params}: { params: { slug: string } }) {
         </Player>
       </Section>
 
-      <Section>
-        <ContentBox>
-          <div
-            className={'content'}
-            dangerouslySetInnerHTML={{
-              __html: post.content,
-            }}
-          />
-        </ContentBox>
-      </Section>
+      {post.content && (
+        <Section>
+          <ContentBox>
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{
+                __html: post.content,
+              }}
+            />
+          </ContentBox>
+        </Section>
+      )}
 
       <Section>
         {Array.isArray(relatedPostsList) && relatedPostsList.length > 0 && (

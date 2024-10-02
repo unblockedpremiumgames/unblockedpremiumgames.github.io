@@ -14,7 +14,7 @@ type TTemplateArchiveProps = {
   slug: string;
   title: string;
   posts: IPostCard[];
-  content: string;
+  content?: string;
   pagination: IPagination
 }
 export default function TemplateArchive({

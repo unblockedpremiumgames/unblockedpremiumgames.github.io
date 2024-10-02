@@ -43,16 +43,19 @@ export default async function Page({params}: { params: { slug: string } }) {
         </PageHeading>
       </Section>
 
-      <Section>
-        <ContentBox>
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{
-              __html: page.content,
-            }}
-          />
-        </ContentBox>
-      </Section>
+      {page.content && (
+        <Section>
+          <ContentBox>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{
+                __html: page.content,
+              }}
+            />
+          </ContentBox>
+        </Section>
+      )}
+
     </div>
   );
 }

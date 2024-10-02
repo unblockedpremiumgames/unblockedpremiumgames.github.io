@@ -65,23 +65,18 @@ export default async function Home() {
         )}
       </Section>
 
-      <Section>
-        <ContentBox>
-          <Image
-            src={'/home.webp'}
-            className="content-box__image"
-            alt={page.title}
-            width={220}
-            height={182}
-          />
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{
-              __html: page.content,
-            }}
-          />
-        </ContentBox>
-      </Section>
+      {page.content && (
+        <Section>
+          <ContentBox>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{
+                __html: page.content,
+              }}
+            />
+          </ContentBox>
+        </Section>
+      )}
     </div>
   );
 }
